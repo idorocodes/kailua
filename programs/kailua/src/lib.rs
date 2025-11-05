@@ -17,9 +17,8 @@ declare_id!("2vQRNXYKgupCSi5448ray5LAkMTwSP6a2D9cwn5hyGGB");
 pub mod kailua {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
+    pub fn new_query(ctx:Context<SubmitQueryContext>, query_id:String, agent_id:String,query_payload:String,payment:u64) -> Result<()>{
+        submit_query(ctx, query_id, agent_id, query_payload, payment)
     }
 }
 

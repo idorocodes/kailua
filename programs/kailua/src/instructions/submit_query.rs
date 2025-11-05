@@ -1,8 +1,8 @@
-use anchor_lang::prelude::*;
 use crate::constants::*;
 use crate::error::Errors;
 use crate::events::*;
 use crate::states::*;
+use anchor_lang::prelude::*;
 
 pub fn submit_query(
     ctx: Context<SubmitQueryContext>,
@@ -36,13 +36,16 @@ pub fn submit_query(
 }
 
 #[derive(Accounts)]
+#[instruction(agent_id:String,query_id:String)]
 pub struct SubmitQueryContext<'info> {
     #[account(mut)]
     pub signer: Signer<'info>,
 
     #[account(init,
+       payer = signer,
        space = ANCHOR_DISCRIMINATOR + Query::INIT_SPACE,
-       payer = signer
+       seeds = [b"query",agent_id.as_bytes(),query_id.as_bytes()],
+       bump
         )]
     pub query: Account<'info, Query>,
 
