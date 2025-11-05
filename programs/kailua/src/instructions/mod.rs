@@ -6,3 +6,5 @@ mod getquery_status;
 pub use getquery_status::*;
 mod log_metrics;
 pub use log_metrics::*;
+mod verify_payament;
+pub use verify_payament::*;

@@ -11,4 +11,6 @@ pub enum  Errors{
     PayementNotSupplied,
     #[msg("Payment payload is not supplied")]
     PaymentPayloadNotSupplied,
+    #[msg("Payment is not pending")]
+    PaymentNotPending,
 }
